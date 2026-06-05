@@ -1,0 +1,11 @@
+// Barrel — feature code imports motion ONLY from '@/components/motion'.
+export { MotionProvider } from './motion-provider'
+export { FadeInUp } from './fade-in-up'
+export { Stagger, StaggerItem } from './stagger'
+export { AnimatedList, AnimatedListItem } from './animated-list'
+export { Pane } from './pane'
+export { InteractiveCard } from './interactive-card'
+export { Press } from './press'
+export { Skeleton } from './skeleton'
+export { NumberTicker } from './number-ticker'
+export * from './variants'

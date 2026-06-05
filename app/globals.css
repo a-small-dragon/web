@@ -1,0 +1,181 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ============================================================================
+   QuizForge tokens — palette "Calm Authority" (indigo on cool-neutral) + motion + elevation.
+   See artifacts/design/DESIGN.md (palette) and web/MOTION.md (motion).
+   ============================================================================ */
+:root {
+  --radius: 0.625rem;
+
+  --background: oklch(1 0 0);                     /* #FFFFFF */
+  --foreground: oklch(0.21 0.006 286);           /* #18181B */
+  --card: oklch(1 0 0);            --card-foreground: oklch(0.21 0.006 286);
+  --popover: oklch(1 0 0);         --popover-foreground: oklch(0.21 0.006 286);
+
+  --primary: oklch(0.511 0.262 277);             /* #4F46E5 indigo-600 */
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.967 0.001 286);           /* #F4F4F5 */
+  --secondary-foreground: oklch(0.27 0.006 286); /* #27272A */
+  --muted: oklch(0.967 0.001 286); --muted-foreground: oklch(0.442 0.017 286); /* #F4F4F5 / #52525B */
+  --accent: oklch(0.984 0.014 181); --accent-foreground: oklch(0.511 0.096 186); /* #F0FDFA / #0F766E teal */
+
+  --success: oklch(0.596 0.145 163);             /* #059669 */
+  --success-foreground: oklch(0.99 0 0);
+  --success-text: oklch(0.508 0.118 165);        /* #047857 */
+  --success-subtle: oklch(0.95 0.052 163);       /* #D1FAE5 */
+
+  --warning: oklch(0.666 0.179 58);              /* #D97706 */
+  --warning-foreground: oklch(0.279 0.077 46);   /* #451A03 dark ink on amber */
+  --warning-text: oklch(0.555 0.163 49);         /* #B45309 */
+  --warning-subtle: oklch(0.962 0.059 96);       /* #FEF3C7 */
+
+  --destructive: oklch(0.58 0.22 27);            /* #DC2626 — delete/errors only */
+  --destructive-foreground: oklch(0.99 0 0);
+  --info: oklch(0.52 0.10 207);                  /* #0E7490 */
+
+  --border: oklch(0.92 0.004 286); --input: oklch(0.92 0.004 286); /* #E4E4E7 */
+  --ring: oklch(0.511 0.262 277);                /* #4F46E5 */
+
+  --chart-1: oklch(0.511 0.262 277);
+  --chart-2: oklch(0.635 0.110 185);
+  --chart-3: oklch(0.666 0.179 58);
+  --chart-4: oklch(0.560 0.180 305);
+  --chart-5: oklch(0.640 0.120 240);
+
+  /* elevation — shadows use the slate-ink hue, not pure black */
+  --elevation-1: 0 1px 2px 0 oklch(0.21 0.04 256 / 0.04), 0 1px 1px 0 oklch(0.21 0.04 256 / 0.03);
+  --elevation-2: 0 1px 2px 0 oklch(0.21 0.04 256 / 0.05), 0 4px 8px -2px oklch(0.21 0.04 256 / 0.06);
+  --elevation-3: 0 2px 4px -1px oklch(0.21 0.04 256 / 0.06), 0 12px 24px -6px oklch(0.21 0.04 256 / 0.10);
+  --highlight-top: inset 0 1px 0 0 oklch(1 0 0 / 0.6);
+
+  --ease-quart: cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.dark {
+  --background: oklch(0.18 0.004 286);           /* #101012 */
+  --foreground: oklch(0.92 0.004 286);           /* #E4E4E7 */
+  --card: oklch(0.21 0.004 286);   --card-foreground: oklch(0.92 0.004 286);
+  --popover: oklch(0.21 0.004 286); --popover-foreground: oklch(0.92 0.004 286);
+
+  --primary: oklch(0.673 0.182 277);             /* #818CF8 indigo-400 */
+  --primary-foreground: oklch(0.257 0.09 281);   /* #1E1B4B */
+  --secondary: oklch(0.27 0.006 286);
+  --secondary-foreground: oklch(0.92 0.004 286);
+  --muted: oklch(0.27 0.006 286);  --muted-foreground: oklch(0.705 0.015 286);
+  --accent: oklch(0.38 0.05 181);  --accent-foreground: oklch(0.855 0.138 181);
+
+  --success: oklch(0.765 0.177 163); --success-foreground: oklch(0.262 0.051 173);
+  --success-text: oklch(0.845 0.143 165);
+  --success-subtle: oklch(0.262 0.051 173);
+  --warning: oklch(0.828 0.189 84); --warning-foreground: oklch(0.279 0.077 46);
+  --warning-text: oklch(0.879 0.169 92);
+  --warning-subtle: oklch(0.279 0.077 46);
+  --destructive: oklch(0.7 0.18 22); --destructive-foreground: oklch(0.20 0.06 27);
+  --info: oklch(0.79 0.12 200);
+
+  --border: oklch(0.30 0.005 286); --input: oklch(0.30 0.005 286);
+  --ring: oklch(0.673 0.182 277);
+
+  --chart-1: oklch(0.673 0.182 277);
+  --chart-2: oklch(0.760 0.110 185);
+  --chart-3: oklch(0.828 0.189 84);
+  --chart-4: oklch(0.740 0.140 305);
+  --chart-5: oklch(0.760 0.120 245);
+
+  --elevation-1: 0 1px 2px 0 oklch(0 0 0 / 0.30);
+  --elevation-2: 0 1px 2px 0 oklch(0 0 0 / 0.35), 0 4px 8px -2px oklch(0 0 0 / 0.40);
+  --elevation-3: 0 2px 4px -1px oklch(0 0 0 / 0.40), 0 12px 24px -6px oklch(0 0 0 / 0.55);
+  --highlight-top: inset 0 1px 0 0 oklch(1 0 0 / 0.06);
+}
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);  --color-foreground: var(--foreground);
+  --color-card: var(--card);              --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);        --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);        --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);    --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);            --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);          --color-accent-foreground: var(--accent-foreground);
+  --color-success: var(--success);        --color-success-foreground: var(--success-foreground);
+  --color-success-text: var(--success-text);   --color-success-subtle: var(--success-subtle);
+  --color-warning: var(--warning);        --color-warning-foreground: var(--warning-foreground);
+  --color-warning-text: var(--warning-text);   --color-warning-subtle: var(--warning-subtle);
+  --color-destructive: var(--destructive);--color-destructive-foreground: var(--destructive-foreground);
+  --color-info: var(--info);
+  --color-border: var(--border);          --color-input: var(--input);  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);        --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);        --color-chart-4: var(--chart-4);  --color-chart-5: var(--chart-5);
+
+  /* elevation utilities: shadow-e1 / shadow-e2 / shadow-e3 */
+  --shadow-e1: var(--elevation-1);
+  --shadow-e2: var(--elevation-2);
+  --shadow-e3: var(--elevation-3);
+
+  /* motion: easing */
+  --ease-standard:   cubic-bezier(0.2, 0, 0, 1);
+  --ease-out:        cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in:         cubic-bezier(0.4, 0, 1, 1);
+  --ease-emphasized: cubic-bezier(0.3, 0, 0, 1);
+  /* motion: duration */
+  --motion-instant: 80ms;  --motion-fast: 120ms;  --motion-base: 180ms;
+  --motion-moderate: 240ms; --motion-slow: 320ms;
+  /* motion: distance */
+  --motion-shift-xs: 2px; --motion-shift-sm: 8px; --motion-shift-md: 12px; --motion-shift-lg: 24px;
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+}
+
+@layer base {
+  * { @apply border-border outline-ring/50; }
+  body { @apply bg-background text-foreground font-sans antialiased; }
+
+  /* one polished, consistent focus-visible (WCAG 2.4.11/2.4.13) */
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+}
+
+/* Skeleton shimmer (pure CSS) */
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .qf-skeleton::after { animation: none !important; }
+}
+
+/* Aurora — animated gradient mesh for the marketing/auth surfaces ONLY (not the calm app interior).
+   prefers-reduced-motion freezes it via the rule above. */
+@keyframes qf-aurora-drift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  100% { transform: translate3d(6%, -5%, 0) scale(1.18); }
+}
+.qf-aurora {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(72px);
+  opacity: 0.5;
+  will-change: transform;
+  animation: qf-aurora-drift 22s ease-in-out infinite alternate;
+}
+.dark .qf-aurora { opacity: 0.38; }
+/* subtle dot texture, faded toward the edges */
+.qf-dotgrid {
+  background-image: radial-gradient(oklch(0.55 0.02 256 / 0.16) 1px, transparent 1px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(ellipse 75% 60% at 50% 28%, #000 28%, transparent 76%);
+  mask-image: radial-gradient(ellipse 75% 60% at 50% 28%, #000 28%, transparent 76%);
+}
