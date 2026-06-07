@@ -24,7 +24,7 @@ const NAV: Record<Role, { href: string; label: string }[]> = {
     { href: '/learn', label: 'Learn' },
     { href: '/my-classes', label: 'Classes' },
   ],
-  admin: [],
+  admin: [{ href: '/admin', label: 'Admin Console' }],
 }
 
 export function AppHeader({ user }: { user: { name: string; role: Role } }) {
