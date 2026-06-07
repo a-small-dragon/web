@@ -16,7 +16,7 @@ function StatCard({ s }: { s: Stat }) {
       <div className="flex items-center justify-between">
         <span className="text-sm font-medium text-muted-foreground">{s.label}</span>
         <span className="grid size-9 place-items-center rounded-lg bg-muted text-muted-foreground">
-          <Icon className="size-4.5" aria-hidden />
+          <Icon className="size-5" aria-hidden />
         </span>
       </div>
       <div className="mt-3 text-3xl font-semibold tracking-tight">
@@ -64,15 +64,15 @@ export default async function AdminOverviewPage() {
 
           <div className="mt-6 grid gap-4 sm:grid-cols-3">
             <Card className="flex items-center gap-3 p-4">
-              <span className="grid size-9 place-items-center rounded-lg bg-muted text-muted-foreground"><ShieldCheck className="size-4.5" aria-hidden /></span>
+              <span className="grid size-9 place-items-center rounded-lg bg-muted text-muted-foreground"><ShieldCheck className="size-5" aria-hidden /></span>
               <div><div className="text-xl font-semibold"><NumberTicker value={o.admins} /></div><div className="text-xs text-muted-foreground">Admins</div></div>
             </Card>
             <Card className="flex items-center gap-3 p-4">
-              <span className="grid size-9 place-items-center rounded-lg bg-muted text-muted-foreground"><BadgeCheck className="size-4.5" aria-hidden /></span>
+              <span className="grid size-9 place-items-center rounded-lg bg-muted text-muted-foreground"><BadgeCheck className="size-5" aria-hidden /></span>
               <div><div className="text-xl font-semibold"><NumberTicker value={o.teachers} /></div><div className="text-xs text-muted-foreground">Teachers</div></div>
             </Card>
             <Card className="flex items-center gap-3 p-4">
-              <span className="grid size-9 place-items-center rounded-lg bg-muted text-muted-foreground"><UserRound className="size-4.5" aria-hidden /></span>
+              <span className="grid size-9 place-items-center rounded-lg bg-muted text-muted-foreground"><UserRound className="size-5" aria-hidden /></span>
               <div><div className="text-xl font-semibold"><NumberTicker value={o.students} /></div><div className="text-xs text-muted-foreground">Students</div></div>
             </Card>
           </div>

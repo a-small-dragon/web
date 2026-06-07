@@ -2,6 +2,7 @@ import { adminGet, fmtDate, type AdminExam } from '@/lib/admin'
 import { PageHeader } from '@/components/app/page-header'
 import { AdminTable, EmptyRow } from '@/components/app/admin-table'
 import { Badge } from '@/components/ui/badge'
+import { DeleteEntityButton } from '@/components/app/delete-entity-button'
 
 export const metadata = { title: 'Admin · Exams · QuizForge' }
 
@@ -11,7 +12,7 @@ export default async function AdminExamsPage() {
   return (
     <>
       <PageHeader title="Exams" count={exams.length} description="Every exam across all teachers." />
-      <AdminTable headers={['Title', 'Teacher', 'Status', 'Questions', 'Assigned', 'Created']}>
+      <AdminTable headers={['Title', 'Teacher', 'Status', 'Questions', 'Assigned', 'Created', '']}>
         {exams.map((e) => (
           <tr key={e.id} className="hover:bg-muted/30">
             <td className="px-4 py-2.5 font-medium">{e.title}</td>
@@ -20,9 +21,10 @@ export default async function AdminExamsPage() {
             <td className="px-4 py-2.5 tabular-nums">{e.questionCount}</td>
             <td className="px-4 py-2.5 tabular-nums">{e.assignedClasses}</td>
             <td className="px-4 py-2.5 text-muted-foreground tabular-nums">{fmtDate(e.createdAt)}</td>
+            <td className="px-4 py-2.5 text-right"><DeleteEntityButton kind="exams" id={e.id} label={e.title} /></td>
           </tr>
         ))}
-        {exams.length === 0 && <EmptyRow cols={6} label="No exams yet." />}
+        {exams.length === 0 && <EmptyRow cols={7} label="No exams yet." />}
       </AdminTable>
     </>
   )
