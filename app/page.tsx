@@ -4,7 +4,7 @@ import { FileText, GraduationCap, BarChart3 } from 'lucide-react'
 import { getUser } from '@/lib/auth'
 import { buttonVariants } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { cn } from '@/lib/utils'
+import { cn, homeFor } from '@/lib/utils'
 import { Aurora } from '@/components/app/aurora'
 import { FadeInUp, Stagger, StaggerItem } from '@/components/motion'
 
@@ -17,7 +17,7 @@ const FEATURES = [
 // Logged in → straight to your area. Logged out → an expressive landing (aurora; not the calm interior).
 export default async function Home() {
   const user = await getUser()
-  if (user) redirect(user.role === 'student' ? '/take' : '/exams')
+  if (user) redirect(homeFor(user.role))
 
   return (
     <main className="relative flex min-h-svh flex-col items-center justify-center overflow-hidden px-4 py-16 text-center">
