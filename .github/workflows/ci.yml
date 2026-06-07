@@ -4,19 +4,45 @@ on:
     branches: [main]
   pull_request:
 
+# PR gate: lint + test must pass before build.
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '24'
-      - name: install
-        run: npm install --legacy-peer-deps
-      - name: lint
-        run: npm run lint --if-present
+          node-version: '20'
+          cache: npm
+      - run: npm ci --legacy-peer-deps
+      - name: eslint
+        run: npm run lint
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - run: npm ci --legacy-peer-deps
+      - name: typecheck
+        run: npx tsc --noEmit
+      - name: unit tests (if any)
+        run: npm test --if-present
+
+  build:
+    runs-on: ubuntu-latest
+    needs: [lint, test]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+      - run: npm ci --legacy-peer-deps
       - name: build
         run: npm run build
         env:
-          NODE_ENV: production
+          API_URL: http://localhost:8080
