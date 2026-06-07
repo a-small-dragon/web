@@ -6,3 +6,6 @@ next-env.d.ts
 !.env.example
 npm-debug.log*
 .DS_Store
+
+# TS incremental build info
+*.tsbuildinfo
