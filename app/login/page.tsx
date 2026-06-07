@@ -10,7 +10,7 @@ import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { FadeInUp } from '@/components/motion'
 import { Aurora } from '@/components/app/aurora'
-import { cn } from '@/lib/utils'
+import { cn, homeFor } from '@/lib/utils'
 
 type Mode = 'login' | 'signup'
 type Role = 'teacher' | 'student'
@@ -40,7 +40,7 @@ export default function LoginPage() {
     if (res.ok) {
       const data = await res.json().catch(() => ({}))
       // Land each role on its own home; the API enforces the boundary regardless.
-      router.push(data.user?.role === 'student' ? '/take' : '/exams')
+      router.push(homeFor(data.user?.role ?? 'teacher'))
       router.refresh()
       return
     }

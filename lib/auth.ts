@@ -2,6 +2,7 @@ import { cache } from 'react'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 import { API_URL } from '@/lib/api'
+import { homeFor } from '@/lib/utils'
 
 // httpOnly cookie holding the API JWT — set by the login route handler (BFF pattern),
 // never readable by client JS.
@@ -40,6 +41,6 @@ export const getUser = cache(async (): Promise<User | null> => {
 export async function requireRole(role: Role): Promise<User> {
   const u = await getUser()
   if (!u) redirect('/login')
-  if (u.role !== role) redirect(u.role === 'teacher' ? '/exams' : '/take')
+  if (u.role !== role) redirect(homeFor(u.role))
   return u
 }
