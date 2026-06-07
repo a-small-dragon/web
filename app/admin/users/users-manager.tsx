@@ -10,7 +10,7 @@ import { Label } from '@/components/ui/label'
 import { Badge } from '@/components/ui/badge'
 import { Card } from '@/components/ui/card'
 import { PageHeader } from '@/components/app/page-header'
-import { fmtDate, type AdminUser } from '@/lib/admin'
+import { fmtDate, type AdminUser } from '@/lib/admin-types'
 
 type Role = 'admin' | 'teacher' | 'student'
 const ROLES: Role[] = ['admin', 'teacher', 'student']
